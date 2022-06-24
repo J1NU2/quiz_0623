@@ -2,6 +2,7 @@ from unicodedata import category
 from django.db import models
 
 
+# 제품 카테고리
 class Category(models.Model):
     class Meta:
         db_table = "categories"
@@ -9,6 +10,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
 
 
+# 제품
 class Item(models.Model):
     class Meta:
         db_table = "items"
@@ -18,6 +20,7 @@ class Item(models.Model):
     image_url = models.URLField()
 
 
+# 사람(?)
 class Order(models.Model):
     class Meta:
         db_table = "orders"
@@ -27,6 +30,7 @@ class Order(models.Model):
     item = models.ManyToManyField('Item', through='ItemOrder')
 
 
+# 제품 및 사람(?) 간 중간 테이블(피벗 테이블)
 class ItemOrder(models.Model):
     class Meta:
         db_table = "item_orders"
